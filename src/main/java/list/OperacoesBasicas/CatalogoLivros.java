@@ -9,14 +9,18 @@ public class CatalogoLivros {
     public void adicionarLivro(String titulo, String autor, int anoPublicacao) {
             livro.add(new Livro(titulo, autor, anoPublicacao));
     }
-    public List<Livro>livro(String autor) {
-        List<Livro> pequisaPorAutor = new ArrayList<>();
+    public List<Livro>pesquisaPorAutor(String autor) {
+        List<Livro> ListaPesquisaPorAutor = new ArrayList<>();
         for(Livro t : livro){
-            if(t.getAutor().equalsIgnoreCase(autor)){
-                pequisaPorAutor.add(t);
+            if(!livro.isEmpty()){
+                if(t.getAutor().equalsIgnoreCase(autor)){
+                    ListaPesquisaPorAutor.add(t);
+                }
+            }else{
+                System.out.println("Lista Vazia");
             }
         }
-        return pequisaPorAutor;
+        return ListaPesquisaPorAutor;
     }
     public void imprimirLista() {
         System.out.println(livro);
@@ -28,8 +32,7 @@ public class CatalogoLivros {
         cv.adicionarLivro("titulo 2", "autor1", 1992);
         cv.adicionarLivro("titulo 3", "autorDiferente", 2089);
         cv.imprimirLista();
-        cv.livro("autor1");
-        System.out.println(cv.livro("autor1"));
+        System.out.println(cv.pesquisaPorAutor("autor1"));
 
     }
 }
